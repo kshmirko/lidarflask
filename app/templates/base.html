@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+    <head>
+      {% if title %}
+      <title>{{ title }} - ЛидарПРО</title>
+      {% else %}
+      <title>Добро пожаловать в ЛидарПРО</title>
+      {% endif %}
+    </head>
+    <body>
+        <div>
+          <span>ЛидарПРО:</span>
+          <span><a href="{{ url_for('index') }}">Домой</a><span/>
+          <span><a href="{{ url_for('upload') }}">Выгрузка данных</a><span/>
+          {% if current_user.is_anonymous %}
+          <span><a href="{{ url_for('login') }}">Выход</a><span/>
+          {% else %}
+          <span><a href="{{ url_for('user', username=current_user.username) }}">Профиль</a><span/>
+          <span><a href="{{ url_for('logout') }}">Выход</a></span>
+          {% endif %}
+        </div>
+        <hr>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li><p style="color: red;">{{ message }}</p></li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </body>
+</html>
+

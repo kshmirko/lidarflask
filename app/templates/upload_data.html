@@ -1,0 +1,66 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+    <h1><u>Выгрузка эксперимента</u></h1>
+    <form action="" method="post" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.experiment_title.label }}<br>
+            {{ form.experiment_title(size=50) }}<br>
+            {% for error in form.experiment_title.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.experiment_descr.label }}<br>
+            {{ form.experiment_descr(cols=50, rows=5)}}<br>
+            {% for error in form.experiment_descr.errors %}
+            <span style="color: red;">[{{error}}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.experiment_date.label }}<br>
+            {{ form.experiment_date(size=50) }}<br>
+            {% for error in form.experiment_date.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        
+        <p>
+            {{ form.spatial_res.label }}<br>
+            {{ form.spatial_res}}<br>
+            {% for error in form.spatial_res.errors %}
+            <span style="color: red;">[{{error}}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.accum_time.label }}<br>
+            {{ form.accum_time}}<br>
+            {% for error in form.accum_time.errors %}
+            <span style="color: red;">[{{error}}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.experiment_file_dat.label }}<br>
+            {{ form.experiment_file_dat }}<br>
+            {% for error in form.experiment_file_dat.errors %}
+            <span style="color: red;">[{{error}}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.experiment_file_dak.label }}<br>
+            {{ form.experiment_file_dak }}<br>
+            {% for error in form.experiment_file_dak.errors %}
+            <span style="color: red;">[{{error}}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+{% endblock %}
